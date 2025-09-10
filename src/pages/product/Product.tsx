@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "../../components/container/Container";
+import Button from "../../components/button/Button";
 // import { useParams } from "react-router-dom";
 
 const Product = () => {
@@ -7,7 +8,7 @@ const Product = () => {
   return (
     <div>
       <Container>
-        <div className="h-96 shadow mt-4 grid grid-cols-12">
+        <div className="h-60 shadow mt-4 grid grid-cols-12">
           <div className="col-span-10 p-4">
             <h1 className="text-right">عنوان محصول</h1>
             <div className="">
@@ -25,7 +26,9 @@ const Product = () => {
               alt=""
             />
             <div>
-              <button>Add to Cart</button>
+              <Button className="mt-2 w-full " variant="primary">
+                Add to cart
+              </Button>
             </div>
           </div>
         </div>
