@@ -8,8 +8,8 @@ const Product = () => {
   return (
     <div>
       <Container>
-        <div className="h-60 shadow mt-4 grid grid-cols-12">
-          <div className="col-span-10 p-4">
+        <div className="h-60 shadow mt-4 grid grid-cols-12 bg-amber-400">
+          <div className="col-span-9 p-4">
             <h1 className="text-right">عنوان محصول</h1>
             <div className="">
               <p className="text-right">قیمت: 25</p>
@@ -19,7 +19,7 @@ const Product = () => {
               </p>
             </div>
           </div>
-          <div className="col-span-2 p-4 bg-sky-200">
+          <div className="col-span-3 p-4 bg-sky-200">
             <img
               className="rounded "
               src="https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg"
