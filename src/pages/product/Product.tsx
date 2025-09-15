@@ -4,16 +4,19 @@ import Button from "../../components/button/Button";
 import { useParams } from "react-router-dom";
 import { getProdcutDetail } from "../../services/api";
 import type { ProductsType } from "../../types/servertype";
+import { useShoppingCartContext } from "../../context/ShoppingCartContex";
 
 const Product = () => {
   const params = useParams<{ id: string }>();
   const [productsDetails, setProductDetails] = useState<ProductsType>();
-
+  const { handleIncreaseProductQty, cartItems, handleDecreaseProductQty } =
+    useShoppingCartContext();
   useEffect(() => {
     getProdcutDetail(params.id as string).then((result) => {
       setProductDetails(result);
     });
-  });
+  }, [params.id]);
+  console.log(cartItems);
 
   return (
     <div>
@@ -29,8 +32,23 @@ const Product = () => {
           <div className="col-span-3 p-4 bg-sky-200">
             <img className="rounded " src={productsDetails?.image} alt="" />
             <div>
-              <Button className="mt-2 w-full " variant="primary">
+              <Button
+                onClick={() =>
+                  handleIncreaseProductQty(parseInt(params.id as string))
+                }
+                className="mt-2 w-full "
+                variant="primary"
+              >
                 Add to cart
+              </Button>
+              <Button
+                onClick={() =>
+                  handleDecreaseProductQty(parseInt(params.id as string))
+                }
+                className="mt-2 w-full "
+                variant="danger"
+              >
+                -
               </Button>
             </div>
           </div>
