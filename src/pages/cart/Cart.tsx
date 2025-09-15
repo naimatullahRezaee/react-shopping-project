@@ -10,7 +10,7 @@ const Cart = () => {
       <Container>
         <div>
           {cartItems.map((item) => (
-            <CartItem {...item} />
+            <CartItem {...item} key={item.id} />
           ))}
         </div>
         <div className="bg-gray-200 rounded p-6">

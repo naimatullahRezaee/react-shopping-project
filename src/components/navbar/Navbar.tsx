@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import Container from "../container/Container";
 import { useShoppingCartContext } from "../../context/ShoppingCartContex";
+import Button from "../button/Button";
 
 const Navbar = () => {
-  const { cartQty } = useShoppingCartContext();
+  const { cartQty, handleLogout } = useShoppingCartContext();
   return (
     <div className="h-8 border-b shadow flex  items-center ">
       <Container>
@@ -17,8 +18,9 @@ const Navbar = () => {
             </li>
           </ul>
           <div>
+            <Button onClick={handleLogout}>Logout</Button>
             <Link to="/cart" className="relative">
-              <button>سبد خرید</button>
+              <Link to="/cart">سبد خرید</Link>
 
               <span
                 className="absolute w-5 h-5 bg-red-600 flex justify-center items-center rounded-full text-white -top-1

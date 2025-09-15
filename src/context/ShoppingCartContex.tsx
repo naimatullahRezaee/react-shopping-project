@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 interface IShoppingCartProvider {
@@ -15,6 +15,9 @@ interface IShoppingCartContex {
   handleRemoveProductCart: (id: number) => void;
   getProductQty: (id: number) => number;
   cartQty: number;
+  isLogin: boolean;
+  handleLogin: () => void;
+  handleLogout: () => void;
 }
 
 export const ShoppingCartContext = createContext({} as IShoppingCartContex);
@@ -86,6 +89,14 @@ export function ShoppingCartProvider({ children }: IShoppingCartProvider) {
     0
   );
 
+  const [isLogin, setIsLogin] = useState(false);
+
+  const handleLogin = () => {
+    setIsLogin(true);
+  };
+  const handleLogout = () => {
+    setIsLogin(false);
+  };
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -95,6 +106,9 @@ export function ShoppingCartProvider({ children }: IShoppingCartProvider) {
         getProductQty,
         handleRemoveProductCart,
         cartQty,
+        isLogin,
+        handleLogin,
+        handleLogout,
       }}
     >
       {children}
