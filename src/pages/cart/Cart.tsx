@@ -1,18 +1,17 @@
 import Button from "../../components/button/Button";
 import CartItem from "../../components/cartitem/CartItem";
 import Container from "../../components/container/Container";
-// import { useShoppingCartContext } from "../../context/ShoppingCartContex";
+import { useShoppingCartContext } from "../../context/ShoppingCartContex";
 
 const Cart = () => {
-  // const { cartItems } = useShoppingCartContext();
+  const { cartItems } = useShoppingCartContext();
   return (
     <div>
       <Container>
         <div>
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
+          {cartItems.map((item) => (
+            <CartItem {...item} />
+          ))}
         </div>
         <div className="bg-gray-200 rounded p-6">
           <p className="text-right">قیمت کل: $3,000</p>
