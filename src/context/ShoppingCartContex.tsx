@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 interface IShoppingCartProvider {
   children: React.ReactNode;
@@ -23,7 +24,10 @@ export const useShoppingCartContext = () => {
 };
 
 export function ShoppingCartProvider({ children }: IShoppingCartProvider) {
-  const [cartItems, setCartItems] = useState<ICartItem[]>([]);
+  const [cartItems, setCartItems] = useLocalStorage<ICartItem[]>(
+    "cartItems",
+    []
+  );
 
   const handleIncreaseProductQty = (id: number) => {
     setCartItems((currentItems) => {
