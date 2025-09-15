@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import { login } from "../services/api";
 
 interface IShoppingCartProvider {
   children: React.ReactNode;
@@ -92,7 +93,9 @@ export function ShoppingCartProvider({ children }: IShoppingCartProvider) {
   const [isLogin, setIsLogin] = useState(false);
 
   const handleLogin = () => {
-    setIsLogin(true);
+    login("ali", "12345").finally(() => {
+      setIsLogin(true);
+    });
   };
   const handleLogout = () => {
     setIsLogin(false);
